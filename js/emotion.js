@@ -127,7 +127,6 @@ function voceTextAnimation(play) {
 }
 
 function scaleTrigger(target) {
-
     if (target.classList.contains('active')) {
         target.classList.remove('active');
         active = false;
@@ -202,9 +201,11 @@ function faceSleep() {
     mouth.transition()
         .duration(1000)
         .attr("d", [sleepMouth])
+        .attr("transform", "translate(0,0)")
         .transition()
         .duration(1000)
         .attr("d", [defaultMouth])
+        .attr("transform", "translate(0,0)")
         .on('end', faceSleep)
 }
 

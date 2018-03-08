@@ -29,94 +29,19 @@
                 </svg>
             </div>
             <div class="btn-group">
-                <button class="active" onclick="volumeTrigger(this,'angry',event)">Angry Mode</button>
+                <button class="active" onclick="volumeTrigger(this,'default',event)">Default Mode</button>
+                <button onclick="volumeTrigger(this,'angry',event)">Angry Mode</button>
                 <button onclick="volumeTrigger(this,'enjoy',event)">Enjoy Mode</button>
                 <button onclick="volumeTrigger(this,'sad',event)">Sad Mode</button>
             </div>
         </div>
-
-
-        <div class="mic-wrap" onclick="scaleTrigger(this)">
-            <svg class="mic" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
-
-                <g>
-                    <path class="fill" d="M15,19L15,19c-1.7,0-3-1.3-3-3V9c0-1.7,1.3-3,3-3h0c1.7,0,3,1.3,3,3v7C18,17.7,16.7,19,15,19z" />
-                </g>
-                <g>
-                    <path class="line" d="M20.4,15.3c0,3-2.4,5.4-5.4,5.4s-5.4-2.4-5.4-5.4" />
-                    <line class="line" x1="15" y1="20.7" x2="15" y2="24.1" />
-                </g>
-            </svg>
-        </div>
-
+        <p class="mic-wrap">
+            Volume<span>0</span>
+        </p>
         <div id="intro" class="voice-text">
-            <p class="intro active">캐릭터를 누른 후</br>목소리를 입력해주세요</p>
+            <p class="intro active">마이크 테스트화면입니다</br>캐릭터를 누른 후 말해주세요</p>
         </div>
-        <div class="voice-text angry">
-
-            <p class="hearing">듣고있어요...</p>
-            <p class="result">
-                <span>친구들하고</span>
-                <span></span>
-                <span>재밌게</span>
-                <span></span>
-                <span>놀고</span>
-                <span></span>
-                <span>있어?</span>
-            </p>
-        </div>
-        <div class="emotion-text angry">
-            <p class="emotion-result">조금 화났군요? 캄다운~~</p>
-            <ul>
-                <li>분노</li>
-                <li>흥분</li>
-                <li>약오름</li>
-                <li>짜증</li>
-            </ul>
-        </div>
-
-        <div class="voice-text sad">
-            <p class="hearing">듣고있어요...</p>
-            <p class="result">
-                <span>난</span>
-                <span></span>
-                <span>정말</span>
-                <span></span>
-                <span>괜찮으니까</span>
-                <span></span>
-                <span>걱정마</span>
-            </p>
-        </div>
-        <div class="emotion-text sad">
-            <p class="emotion-result">슬픈일 있어요? 힘내세요ㅜㅜ</p>
-            <ul>
-                <li>슬픔</li>
-                <li>비통</li>
-                <li>우울</li>
-                <li>아픔</li>
-            </ul>
-        </div>
-        <div class="voice-text enjoy">
-            <p class="hearing">듣고있어요...</p>
-            <p class="result">
-                <span>나도</span>
-                <span></span>
-                <span>이번</span>
-                <span></span>
-                <span>모의고사</span>
-                <span></span>
-                <span>망쳤어</span>
-            </p>
-        </div>
-        <div class="emotion-text enjoy">
-            <p class="emotion-result">저도 기분이 좋네요ㅎㅎ</p>
-            <ul>
-                <li>상쾌</li>
-                <li>흥분</li>
-                <li>기쁨</li>
-                <li>사랑</li>
-            </ul>
-        </div>
+        
         <div class="footer">
             <div class="title">
                 <span>by</span>

@@ -3,37 +3,38 @@ var emotionPath, facePath;
 var leftEye, rightEye, mouth;
 var timer;
 var active = false;
-var emotionType = 'angry';
+var emotionType = 'default';
 facePath = d3.select("#face")
 svg.attr("width", document.documentElement.clientWidth);
 svg.attr("height", document.documentElement.clientHeight);
 var angles = d3.range(0, 2 * Math.PI, Math.PI / 100);
-var layer=document.querySelector('.btn-group');
-var config=document.querySelector('.btn-config');
+var layer = document.querySelector('.btn-group');
+var config = document.querySelector('.btn-config');
 //set emotion
-function setting(target,e){
+function setting(target, e) {
     e.stopPropagation();
-    if(target.classList.contains('active')){
+    if (target.classList.contains('active')) {
         target.classList.remove('active');
         layer.classList.remove('active');
-    }else{
+    } else {
         target.classList.add('active');
         layer.classList.add('active');
     }
 }
 //hide setting
-function hideSetting(){
+function hideSetting() {
     layer.classList.remove('active');
     config.classList.remove('active')
 }
-function volumeTrigger(target,type,e) {
+
+function volumeTrigger(target, type, e) {
     e.stopPropagation();
-    var siblings=document.querySelectorAll('.btn-group button');
-    for(var i=0;i<siblings.length;i++){
+    var siblings = document.querySelectorAll('.btn-group button');
+    for (var i = 0; i < siblings.length; i++) {
         siblings[i].classList.remove('active');
     }
     target.classList.toggle('active');
-    emotionType=type;
+    emotionType = type;
     layer.classList.remove('active');
     config.classList.remove('active');
 }
@@ -72,7 +73,7 @@ var angryMouth = "M16,19.1h-2c-2,0-3.7,2.9-3.7,0.3v-0.8c0,0,2.8,0,3.7,0c0.5,0,1.
 var smileEyeLeft = defaultEyeLeft;
 var smileEyeRight = defaultEyeRight;
 var smileMouth = "M16.3,24h-2.5c-2.5,0-4.6-2.1-4.6-4.6v-0.8c0,0,3.5,0,4.6,0c0.6,0,1.9,0,2.5,0c1.2,0,4.6,0,4.6,0v0.8C20.9,22,18.8,24,16.3,24z";
-var smileWideMouth="M16.3,24h-2.5c-2.5,0-6.6-3.1-6.6-5.6v-0.8c0,0,5.5,0,6.6,0c0.6,0,1.9,0,2.5,0c1.2,0,6.6,0,6.6,0v0.8C22.9,21,18.8,24,16.3,24z"
+var smileWideMouth = "M16.3,24h-2.5c-2.5,0-6.6-3.1-6.6-5.6v-0.8c0,0,5.5,0,6.6,0c0.6,0,1.9,0,2.5,0c1.2,0,6.6,0,6.6,0v0.8C22.9,21,18.8,24,16.3,24z"
 var sadEyeLeft = "M8.4,12.8L8.4,12.8c-1,0-1.9-0.2-1.9-1.2v0c0-1,0.8-2.5,1.9-2.5h0c1,0,1.9,1.5,1.9,2.5v0C10.3,12.6,9.4,12.8,8.4,12.8z"
 var sadEyeRight = "M21.6,12.8L21.6,12.8c-1,0-1.9-0.2-1.9-1.2v0c0-1,0.8-2.5,1.9-2.5h0c1,0,1.9,1.5,1.9,2.5v0C23.4,12.6,22.6,12.8,21.6,12.8z"
 var sadMouth = "M15.9,20.4h-1.7c-1.7,0-3.1,1.4-3.1,0.9v-0.2c0,0,2.3-0.9,3.1-0.9c0.4,0,1.3,0,1.7,0c0.8,0,3.1,0.9,3.1,0.9v0.2C18.9,21.8,17.6,20.4,15.9,20.4z"
@@ -84,60 +85,13 @@ faceSleep();
 
 var hearing, speaking, result;
 
-function voceTextAnimation(play) {
-    var voiceIntro = document.querySelector('#intro p');
-    var voiceText = document.querySelectorAll('.voice-text.' + emotionType + ' p');
-    var emotionText = document.querySelectorAll('.emotion-text.' + emotionType);
-
-    if (!play) {
-        clearTimeout(hearing);
-        clearTimeout(speaking);
-        clearTimeout(result);
-        
-        var voiceTextAll=document.querySelectorAll('.voice-text p');
-        var emotionTextAll=document.querySelectorAll('.emotion-text');
-        for(var i=0; i<voiceTextAll.length;i++){
-            voiceTextAll[i].classList.remove('active');
-        }
-        for(var i=0; i<emotionTextAll.length;i++){
-            emotionTextAll[i].classList.remove('active');
-        }
-        voiceIntro.classList.add('active');
-        return;
-    }
-    var resultText = voiceText[1].querySelectorAll('span');
-    for (var i = 0; i < resultText.length; i++) {
-        resultText[i].style.transitionDelay = "0." + (i + 1) + "s";
-    }
-    voiceIntro.classList.remove('active');
-    hearing = setTimeout(function (e) {
-        voiceText[0].classList.add('active');
-        volume('emotionPath', 50, 'default');
-    }, 500);
-    speaking = setTimeout(function (e) {
-        volume('emotionPath', 50, emotionType);
-    }, 2000);
-    result = setTimeout(function () {
-        voiceText[0].classList.remove('active');
-        voiceText[1].classList.add('active');
-        emotionText[0].classList.add('active');
-        volume('emotionPath', 50, emotionType);
-    }, 3000)
-
-}
-
 function scaleTrigger(target) {
-
     if (target.classList.contains('active')) {
         target.classList.remove('active');
-        active = false;
         scaleOut('emotionPath', emotion);
-        voceTextAnimation(false);
     } else {
         target.classList.add('active');
-        active = true;
         scale('emotionPath', emotion);
-        voceTextAnimation(true);
 
     }
 
@@ -202,9 +156,11 @@ function faceSleep() {
     mouth.transition()
         .duration(1000)
         .attr("d", [sleepMouth])
+        .attr("transform", "translate(0,0)")
         .transition()
         .duration(1000)
         .attr("d", [defaultMouth])
+        .attr("transform", "translate(0,0)")
         .on('end', faceSleep)
 }
 
@@ -290,19 +246,19 @@ function faceAngry() {
         .duration(500)
         .attr("d", [angryMouth])
         .attr("transform", "translate(0,2)")
-        .attr("stroke-width","1.5")
+        .attr("stroke-width", "1.5")
         .transition()
         .duration(300)
         .attr("transform", "translate(-1,2)")
-        .attr("stroke-width","0.8")
+        .attr("stroke-width", "0.8")
         .transition()
         .duration(300)
         .attr("transform", "translate(1,2)")
-        .attr("stroke-width","0.8")
+        .attr("stroke-width", "0.8")
         .transition()
         .duration(300)
         .attr("transform", "translate(0,2)")
-        .attr("stroke-width","1.5")
+        .attr("stroke-width", "1.5")
         .on('end', faceAngry)
 }
 
@@ -321,23 +277,23 @@ function faceSad() {
         .duration(500)
         .attr("d", [sadMouth])
         .attr("transform", "translate(0,-2)")
-        .attr("stroke-width","1.5")
+        .attr("stroke-width", "1.5")
         .transition()
         .duration(300)
         .attr("transform", "translate(0,-4)")
-        .attr("stroke-width","0.8")
+        .attr("stroke-width", "0.8")
         .transition()
         .duration(300)
         .attr("transform", "translate(0,-2)")
-        .attr("stroke-width","1.5")
+        .attr("stroke-width", "1.5")
         .transition()
         .duration(300)
         .attr("transform", "translate(0,-4)")
-        .attr("stroke-width","0.8")
+        .attr("stroke-width", "0.8")
         .transition()
         .duration(300)
         .attr("transform", "translate(0,-2)")
-        .attr("stroke-width","1.5")
+        .attr("stroke-width", "1.5")
         .on('end', faceSad)
 }
 
@@ -465,7 +421,7 @@ function volume(type, size, emotionType) {
                             }
 
                             var position = 80 + Math.cos(a * valley - i * 1 * Math.PI / 4 + t) *
-                                Math.pow((1 + Math.cos(a - t)) / 2, 4) * elapsed;
+                                Math.pow((1 + Math.cos(a - t)) / 2, 4) * size;
                             return position
                         });
                 })
@@ -480,6 +436,7 @@ function volume(type, size, emotionType) {
 }
 
 function scale(type, color) {
+
     leftEye.attr('fill', 'rgba(255, 255, 255,1)');
     rightEye.attr('fill', 'rgba(255, 255, 255,1)');
     mouth.attr('stroke', 'rgba(255, 255, 255,1)').attr("fill", "rgba(255, 255, 255,1)");
@@ -495,11 +452,18 @@ function scale(type, color) {
         .attr("fill", function (d, i) {
             return color[i]
         })
-        .attr("stroke", transparent)
+        .attr("stroke", function () {
+
+        })
+        .on('end', function () {
+            active = true;
+        })
 
 }
 
 function scaleOut(type, color) {
+    active = false;
+    faceSleep();
     window[type]
         .datum(function (d, i) {
             return circleWave(d, i);
@@ -511,11 +475,12 @@ function scaleOut(type, color) {
         .attr("stroke", function (d, i) {
             return color[i]
         })
-        .attr("fill", transparent);
+        .attr("fill", transparent)
     leftEye.attr('fill', 'rgba(67, 74, 80,1)');
     rightEye.attr('fill', 'rgba(67, 74, 80,1)');
     mouth.attr('stroke', 'rgba(67, 74, 80,1)').attr("fill", "rgba(67, 74, 80,1)");
-    faceSleep();
+
+
 
 }
 //         var easing = [
@@ -596,10 +561,18 @@ function updateAnalysers(time) {
                 magnitude += freqByteData[i];
             }
 
-            if (active) {
-                if (magnitude > 3000) {
-                    var volumeApi = magnitude / 100;
+            if (magnitude > 3000) {
+                if (active) {
+                    var max=70;
+                    var volumeApi = magnitude / 300;
+                    if(volumeApi>max){
+                        volumeApi=max
+                    }else{
+                        volumeApi = magnitude / 300;
+                    }
+                    document.querySelector('.mic-wrap span').innerHTML=volumeApi.toFixed(2)
                     volume('emotionPath', volumeApi, emotionType);
+
                 }
             }
 
