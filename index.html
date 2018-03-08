@@ -11,8 +11,6 @@
 
     <script src="addon/d3.v5.min.js"></script>
     <script src="addon/d3-path-morphing.min.js"></script>
-    <!-- <script src="addon/three.min.js"></script>
-    <script src="js/3d.js"></script> -->
 
 </head>
 
@@ -33,9 +31,8 @@
             </div>
             <div class="btn-group">
                 <button class="active" onclick="volumeTrigger(this,'angry',event)">Angry Mode</button>
-                <button onclick="volumeTrigger(this,'sad',event)">Sad Mode</button>
                 <button onclick="volumeTrigger(this,'enjoy',event)">Enjoy Mode</button>
-                <button onclick="volumeTrigger(this,'default',event)">Default Mode</button>
+                <button onclick="volumeTrigger(this,'sad',event)">Sad Mode</button>
             </div>
         </div>
 
@@ -121,40 +118,44 @@
                 <li>사랑</li>
             </ul>
         </div>
+        <div class="footer">
+            <div class="title">
+                <span>by</span>
+                <a class="logo" href="https://joomation.com/home">
+                    <svg x="0px" y="0px" viewBox="0 0 80 25">
+                        <ellipse class="logo-svg" cx="13.6" cy="12.8" rx="3.6" ry="4.4"></ellipse>
+                        <ellipse class="logo-svg" cx="23.7" cy="12.8" rx="3.6" ry="4.4"></ellipse>
+                        <ellipse class="logo-svg" cx="64" cy="12.8" rx="3.6" ry="4.4"></ellipse>
+                        <polyline class="logo-svg" points="37.6,17.2 37.6,8.4 34.1,12 30.5,8.4 30.5,17.2 "></polyline>
+                        <g>
+                            <line class="logo-svg" x1="44.2" y1="14.3" x2="42" y2="14.3"></line>
+                            <polyline class="logo-svg" points="47.6,17.2 44.2,8.4 40.8,17.2 	"></polyline>
+                            <line class="logo-svg" x1="44.2" y1="14.3" x2="46.5" y2="14.3"></line>
+                        </g>
+                        <g>
+                            <line class="logo-svg" x1="48.4" y1="8.4" x2="53.8" y2="8.4"></line>
+                            <line class="logo-svg" x1="51.1" y1="8.4" x2="51.1" y2="17.2"></line>
+                        </g>
+                        <line class="logo-svg" x1="56.9" y1="8.4" x2="56.9" y2="17.2"></line>
+                        <polyline class="logo-svg" points="70.6,17.2 70.6,8.4 76.6,17.2 76.6,8.4 "></polyline>
+                        <path class="logo-svg" d="M6.8,8.3c0,0,0,3.9,0,5.8s-1.5,4.3-3.8,2.3"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="github-link">
+                <a href="https://github.com/joomation/voice-inside"></a>
+            </div>
+        </div>
     </div>
     <svg class="wave">
-        
+
     </svg>
     <div class="face-wrap" onclick="scaleTrigger(this)">
         <svg version="1.1" id="face" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
         </svg>
     </div>
-    <div class="footer">
-    <div class="title">
-            <span>by</span>
-            <a class="logo" href="https://joomation.com/home">
-                <svg x="0px" y="0px" viewBox="0 0 80 25">
-                    <ellipse class="logo-svg" cx="13.6" cy="12.8" rx="3.6" ry="4.4"></ellipse>
-                    <ellipse class="logo-svg" cx="23.7" cy="12.8" rx="3.6" ry="4.4"></ellipse>
-                    <ellipse class="logo-svg" cx="64" cy="12.8" rx="3.6" ry="4.4"></ellipse>
-                    <polyline class="logo-svg" points="37.6,17.2 37.6,8.4 34.1,12 30.5,8.4 30.5,17.2 "></polyline>
-                    <g>
-                        <line class="logo-svg" x1="44.2" y1="14.3" x2="42" y2="14.3"></line>
-                        <polyline class="logo-svg" points="47.6,17.2 44.2,8.4 40.8,17.2 	"></polyline>
-                        <line class="logo-svg" x1="44.2" y1="14.3" x2="46.5" y2="14.3"></line>
-                    </g>
-                    <g>
-                        <line class="logo-svg" x1="48.4" y1="8.4" x2="53.8" y2="8.4"></line>
-                        <line class="logo-svg" x1="51.1" y1="8.4" x2="51.1" y2="17.2"></line>
-                    </g>
-                    <line class="logo-svg" x1="56.9" y1="8.4" x2="56.9" y2="17.2"></line>
-                    <polyline class="logo-svg" points="70.6,17.2 70.6,8.4 76.6,17.2 76.6,8.4 "></polyline>
-                    <path class="logo-svg" d="M6.8,8.3c0,0,0,3.9,0,5.8s-1.5,4.3-3.8,2.3"></path>
-                </svg>
-            </a>
-        </div>
-    </div>
+
     <script>
         var md = new MobileDetect(window.navigator.userAgent);
         var body = document.getElementsByTagName("BODY")[0];

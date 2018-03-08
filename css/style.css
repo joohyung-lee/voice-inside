@@ -73,6 +73,7 @@ body {
         stroke-dashoffset: 70;
     }
 }
+
 body.desk {
     background-color: #d2d7d6;
 }
@@ -101,9 +102,11 @@ body {
     opacity: 0.5;
     cursor: pointer;
 }
-.btn-config.active{
+
+.btn-config.active {
     opacity: 1;
 }
+
 .btn-config svg {
     width: 100%;
 }
@@ -249,7 +252,7 @@ button {
     transition: all 0.5s ease;
     font-weight: bold;
     transform: translate(0, 20px);
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .voice-text .result.active span {
@@ -274,8 +277,9 @@ button {
 }
 
 .emotion-text .emotion-result {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
+    color: rgb(103, 109, 114);
 }
 
 .emotion-text ul {
@@ -289,12 +293,12 @@ button {
     background-color: #e8e8e8;
     border-radius: 20px;
     font-size: 13px;
-    color: #777;
+    color: rgb(138, 147, 154);
 }
 
 .wave {
     position: absolute;
-    top: -40px;
+    top: -20px;
     left: 0;
     bottom: 0;
     margin: auto;
@@ -347,7 +351,7 @@ button {
     position: absolute;
     width: 100px;
     height: 100px;
-    top: -40px;
+    top: -20px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -361,4 +365,52 @@ button {
     width: 100%;
 }
 
-#mouth path {}
+.footer {
+    position: absolute;
+    display: flex;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 30px;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    text-align: center;
+}
+
+.footer .title {
+    width: auto;
+    margin: 0;
+}
+
+.footer .logo-svg {
+    stroke: rgb(138, 147, 154);
+}
+
+.footer .title span {
+    color: rgba(67, 74, 80, 0.7);
+    height: 30px;
+}
+
+.footer .title a {
+    color: rgba(67, 74, 80, 0.7);
+    height: 30px;
+    width: 90px;
+    margin: 0;
+}
+
+.footer .github-link {
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background: url(../images/github.png) center center no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+.footer .github-link a {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
