@@ -17,7 +17,6 @@
 
 body {
     position: relative;
-    mix-blend-mode: multiply;
     background: #f4f4f4;
     overflow: hidden;
 }
