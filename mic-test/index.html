@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>emotion</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../addon/d3.v5.min.js"></script>
+    <script src="../addon/d3-path-morphing.min.js"></script>
+    <!-- <script src="../addon/three.min.js"></script>
+    <script src="js/3d.js"></script> -->
+
+</head>
+
+<body>
+    <canvas id="analyser" width="1024" height="500" style="display:none"></canvas>
+    <div class="emotion-wrap">
+        <div class="header">
+            <h1 class="emotion-title">
+                Voice Inside
+            </h1>
+        </div>
+        <div class="voice-text">
+            <p class="intro">캐릭터를 누른 후</br>목소리를 입력해주세요</p>
+            <p class="hearing">듣고있어요</p>
+            <p>친구들하고 재밌게 놀고 있어?</p>
+        </div>
+        <div class="emotion-text">
+            <p>조금 화났군요? 캄다운~~</p>
+            <ul>
+                <li>분노</li>
+                <li>흥분</li>
+                <li>약오름</li>
+                <li>짜증</li>
+            </ul>
+        </div>
+        <svg class="wave">
+            <defs>
+                <radialGradient id="enjoy">
+                    <stop offset="50%" stop-color="rgba(255, 255, 255,0)" />
+                    <stop offset="100%" stop-color="rgba(255, 166, 33,1)" />
+                </radialGradient>
+                <radialGradient id="sad">
+                    <stop offset="50%" stop-color="rgba(255, 255, 255,0)" />
+                    <stop offset="100%" stop-color="rgba(33, 150, 243,1)" />
+                </radialGradient>
+                <radialGradient id="angry">
+                    <stop offset="50%" stop-color="rgba(255, 255, 255,0)" />
+                    <stop offset="100%" stop-color="rgba(244, 67, 54,1)" />
+                </radialGradient>
+                <radialGradient id="fear">
+                    <stop offset="50%" stop-color="rgba(255, 255, 255,0)" />
+                    <stop offset="100%" stop-color="rgba(193, 69, 214,1)" />
+                </radialGradient>
+                <radialGradient id="disgust">
+                    <stop offset="50%" stop-color="rgba(255, 255, 255,0)" />
+                    <stop offset="100%" stop-color="rgba(76, 175, 80,1)" />
+                </radialGradient>
+                <radialGradient id="default">
+                    <stop offset="750%" stop-color="rgba(255, 255, 255,1)" />
+                    <stop offset="100%" stop-color="rgba(255, 255, 255,0)" />
+                </radialGradient>
+            </defs>
+        </svg>
+        <div class="mic-wrap" onclick="scaleTrigger(this)">
+            <svg class="mic" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+
+                <g>
+                    <path class="fill" d="M15,19L15,19c-1.7,0-3-1.3-3-3V9c0-1.7,1.3-3,3-3h0c1.7,0,3,1.3,3,3v7C18,17.7,16.7,19,15,19z" />
+                </g>
+                <g>
+                    <path class="line" d="M20.4,15.3c0,3-2.4,5.4-5.4,5.4s-5.4-2.4-5.4-5.4" />
+                    <line class="line" x1="15" y1="20.7" x2="15" y2="24.1" />
+                </g>
+            </svg>
+        </div>
+        <button onclick="volumeTrigger('default')">기본볼륨</button>
+        <button onclick="volumeTrigger('angry')">화난볼륨</button>
+        <button onclick="volumeTrigger('sad')">슬픈볼륨</button>
+        <button onclick="volumeTrigger('enjoy')">기쁜볼륨</button>
+        <div class="face-wrap"onclick="scaleTrigger(this)">
+            <svg version="1.1" id="face" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+                
+            </svg>
+        </div>
+    </div>
+    
+    <script src="../js/emotion-mic.js"></script>
+
+</body>
+
+</html>

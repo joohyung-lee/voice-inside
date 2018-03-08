@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>emotion</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="addon/mobile-detect.min.js"></script>
+
+    <script src="addon/d3.v5.min.js"></script>
+    <script src="addon/d3-path-morphing.min.js"></script>
+    <!-- <script src="addon/three.min.js"></script>
+    <script src="js/3d.js"></script> -->
+
+</head>
+
+<body onclick="hideSetting()">
+
+    <div class="emotion-wrap">
+        <div class="header">
+            <h1 class="emotion-title">
+                Voice Inside
+            </h1>
+            <div class="btn-config" onclick="setting(this,event)">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" fill="none" stroke="#434a50" stroke-linecap="round"
+                    stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10" viewBox="0 0 24 24">
+                    <path class="st0" d="M13.53,2.8l.87,1a2,2,0,0,0,1.69.7l1.34-.11a2,2,0,0,1,2.16,2.16l-.11,1.34a2,2,0,0,0,.7,1.69l1,.87a2,2,0,0,1,0,3.05l-1,.87a2,2,0,0,0-.7,1.69l.11,1.34a2,2,0,0,1-2.16,2.16l-1.34-.11a2,2,0,0,0-1.69.7l-.87,1a2,2,0,0,1-3.05,0l-.87-1a2,2,0,0,0-1.69-.7l-1.34.11a2,2,0,0,1-2.16-2.16l.11-1.34a2,2,0,0,0-.7-1.69l-1-.87a2,2,0,0,1,0-3.05l1-.87a2,2,0,0,0,.7-1.69L4.41,6.57A2,2,0,0,1,6.57,4.41l1.34.11a2,2,0,0,0,1.69-.7l.87-1A2,2,0,0,1,13.53,2.8Z"
+                    />
+                    <circle class="cls-1" cx="12" cy="12" r="3"></circle>
+                </svg>
+            </div>
+            <div class="btn-group">
+                <button class="active" onclick="volumeTrigger(this,'angry',event)">Angry Mode</button>
+                <button onclick="volumeTrigger(this,'sad',event)">Sad Mode</button>
+                <button onclick="volumeTrigger(this,'enjoy',event)">Enjoy Mode</button>
+                <button onclick="volumeTrigger(this,'default',event)">Default Mode</button>
+            </div>
+        </div>
+
+
+        <div class="mic-wrap" onclick="scaleTrigger(this)">
+            <svg class="mic" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+
+                <g>
+                    <path class="fill" d="M15,19L15,19c-1.7,0-3-1.3-3-3V9c0-1.7,1.3-3,3-3h0c1.7,0,3,1.3,3,3v7C18,17.7,16.7,19,15,19z" />
+                </g>
+                <g>
+                    <path class="line" d="M20.4,15.3c0,3-2.4,5.4-5.4,5.4s-5.4-2.4-5.4-5.4" />
+                    <line class="line" x1="15" y1="20.7" x2="15" y2="24.1" />
+                </g>
+            </svg>
+        </div>
+
+        <div id="intro" class="voice-text">
+            <p class="intro active">캐릭터를 누른 후</br>목소리를 입력해주세요</p>
+        </div>
+        <div class="voice-text angry">
+
+            <p class="hearing">듣고있어요...</p>
+            <p class="result">
+                <span>친구들하고</span>
+                <span></span>
+                <span>재밌게</span>
+                <span></span>
+                <span>놀고</span>
+                <span></span>
+                <span>있어?</span>
+            </p>
+        </div>
+        <div class="emotion-text angry">
+            <p class="emotion-result">조금 화났군요? 캄다운~~</p>
+            <ul>
+                <li>분노</li>
+                <li>흥분</li>
+                <li>약오름</li>
+                <li>짜증</li>
+            </ul>
+        </div>
+
+        <div class="voice-text sad">
+            <p class="hearing">듣고있어요...</p>
+            <p class="result">
+                <span>난</span>
+                <span></span>
+                <span>정말</span>
+                <span></span>
+                <span>괜찮으니까</span>
+                <span></span>
+                <span>걱정마</span>
+            </p>
+        </div>
+        <div class="emotion-text sad">
+            <p class="emotion-result">슬픈일 있어요? 힘내세요ㅜㅜ</p>
+            <ul>
+                <li>슬픔</li>
+                <li>비통</li>
+                <li>우울</li>
+                <li>아픔</li>
+            </ul>
+        </div>
+        <div class="voice-text enjoy">
+            <p class="hearing">듣고있어요...</p>
+            <p class="result">
+                <span>나도</span>
+                <span></span>
+                <span>이번</span>
+                <span></span>
+                <span>모의고사</span>
+                <span></span>
+                <span>망쳤어</span>
+            </p>
+        </div>
+        <div class="emotion-text enjoy">
+            <p class="emotion-result">저도 기분이 좋네요ㅎㅎ</p>
+            <ul>
+                <li>상쾌</li>
+                <li>흥분</li>
+                <li>기쁨</li>
+                <li>사랑</li>
+            </ul>
+        </div>
+    </div>
+    <svg class="wave">
+        
+    </svg>
+    <div class="face-wrap" onclick="scaleTrigger(this)">
+        <svg version="1.1" id="face" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+        </svg>
+    </div>
+    <div class="footer">
+    <div class="title">
+            <span>by</span>
+            <a class="logo" href="https://joomation.com/home">
+                <svg x="0px" y="0px" viewBox="0 0 80 25">
+                    <ellipse class="logo-svg" cx="13.6" cy="12.8" rx="3.6" ry="4.4"></ellipse>
+                    <ellipse class="logo-svg" cx="23.7" cy="12.8" rx="3.6" ry="4.4"></ellipse>
+                    <ellipse class="logo-svg" cx="64" cy="12.8" rx="3.6" ry="4.4"></ellipse>
+                    <polyline class="logo-svg" points="37.6,17.2 37.6,8.4 34.1,12 30.5,8.4 30.5,17.2 "></polyline>
+                    <g>
+                        <line class="logo-svg" x1="44.2" y1="14.3" x2="42" y2="14.3"></line>
+                        <polyline class="logo-svg" points="47.6,17.2 44.2,8.4 40.8,17.2 	"></polyline>
+                        <line class="logo-svg" x1="44.2" y1="14.3" x2="46.5" y2="14.3"></line>
+                    </g>
+                    <g>
+                        <line class="logo-svg" x1="48.4" y1="8.4" x2="53.8" y2="8.4"></line>
+                        <line class="logo-svg" x1="51.1" y1="8.4" x2="51.1" y2="17.2"></line>
+                    </g>
+                    <line class="logo-svg" x1="56.9" y1="8.4" x2="56.9" y2="17.2"></line>
+                    <polyline class="logo-svg" points="70.6,17.2 70.6,8.4 76.6,17.2 76.6,8.4 "></polyline>
+                    <path class="logo-svg" d="M6.8,8.3c0,0,0,3.9,0,5.8s-1.5,4.3-3.8,2.3"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <script>
+        var md = new MobileDetect(window.navigator.userAgent);
+        var body = document.getElementsByTagName("BODY")[0];
+        if (md.mobile()) {
+            body.classList.remove('desk')
+            body.classList.add('mobile')
+        } else {
+            body.classList.remove('mobile')
+            body.classList.add('desk')
+        }
+    </script>
+    <script src="js/emotion.js"></script>
+    <script>
+    </script>
+
+</body>
+
+</html>
