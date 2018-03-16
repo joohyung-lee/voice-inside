@@ -560,20 +560,12 @@ function updateAnalysers(time) {
             for (var i = 0; i < 1024; i++) {
                 magnitude += freqByteData[i];
             }
+            var max = 80;
+            var volumeApi = (magnitude / 300 > max) ? max : magnitude / 300;
 
-            if (magnitude > 3000) {
-                if (active) {
-                    var max=70;
-                    var volumeApi = magnitude / 300;
-                    if(volumeApi>max){
-                        volumeApi=max
-                    }else{
-                        volumeApi = magnitude / 300;
-                    }
-                    document.querySelector('.mic-wrap span').innerHTML=volumeApi.toFixed(2)
-                    volume('emotionPath', volumeApi, emotionType);
-
-                }
+            if (active) {
+                document.querySelector('.mic-wrap span').innerHTML = volumeApi.toFixed(2)
+                volume('emotionPath', volumeApi, emotionType);
             }
 
         }
